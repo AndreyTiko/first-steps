@@ -1,0 +1,16 @@
+/**
+ * Напишите функцию sum, которая работает так: sum(a)(b) = a+b.
+ *
+ */
+function sum(a) {
+  let argumentA = a;
+  return function f(b) {
+    if (b === undefined) {
+      return argumentA;
+    }
+    argumentA += b; // возьмет a из внешнего LexicalEnvironment
+    return f;
+  };
+}
+
+console.log(sum(1)(5)(3)(10)(11)(5)());
